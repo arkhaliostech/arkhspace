@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
-import { Geist } from "next/font/google";
-import { ThemeProvider } from "next-themes";
+import { Bricolage_Grotesque, Lexend_Giga, Lexend_Mega, Archivo } from "next/font/google";
 import "./globals.css";
 
 const defaultUrl = process.env.VERCEL_URL
@@ -9,12 +8,30 @@ const defaultUrl = process.env.VERCEL_URL
 
 export const metadata: Metadata = {
   metadataBase: new URL(defaultUrl),
-  title: "Next.js and Supabase Starter Kit",
-  description: "The fastest way to build apps with Next.js and Supabase",
+  title: "ArkhSpace – Turn your student life into a system that works for you",
+  description: "The ultimate space for students to combine multiple tasks, builds systems, build habits, and find your identity.",
 };
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const bricolageGrotesque = Bricolage_Grotesque({
+  variable: "--font-bricolage",
+  display: "swap",
+  subsets: ["latin"],
+});
+
+const lexendGiga = Lexend_Giga({
+  variable: "--font-lexend-giga",
+  display: "swap",
+  subsets: ["latin"],
+});
+
+const lexendMega = Lexend_Mega({
+  variable: "--font-lexend-mega",
+  display: "swap",
+  subsets: ["latin"],
+});
+
+const archivo = Archivo({
+  variable: "--font-archivo",
   display: "swap",
   subsets: ["latin"],
 });
@@ -25,16 +42,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body className={`${geistSans.className} antialiased`}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          {children}
-        </ThemeProvider>
+    <html lang="en">
+      <body
+        className={`${bricolageGrotesque.variable} ${lexendGiga.variable} ${lexendMega.variable} ${archivo.variable} antialiased`}
+      >
+        {children}
       </body>
     </html>
   );
